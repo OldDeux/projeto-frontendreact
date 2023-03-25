@@ -5,10 +5,10 @@ export const HeaderStyle = styled.header`
     width: 100%;
     height: 13vh;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
     padding: 10px;
-    background-color: #F6C34A;
-    color: black;
+    background-color: black;
+    color: white;
     font-size: 35px;
     padding-left: 50px;
 `

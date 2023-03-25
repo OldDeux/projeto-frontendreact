@@ -1,40 +1,37 @@
 import React from 'react'
+import { Lista } from '../../../assents/productList'
 import { Btn } from '../../ProductCard/ProductCardStyle'
-import { BtnRemove, CartStyle, ItemCart, StyleCartText } from './CartStyle'
+import { BtnRemove, CartStyle, ItemCart, StyleCart, StyleCartText, Total } from './CartStyle'
 
 const Cart = (props) => {
 
-  const { amount, onChangeAmount, cart, setCart } = props
-  const handleAddToCart = (product) =>{
-    const existingItem = cart.find((item) => item.id === product.id);
-    
-    if (existingItem) {
-      setCart(
-        cart.map((item) =>
-          item.id === product.id
-            ? { ...item, amount: item.amount + 1 }
-            : item
-        )
-      );
-    } else {
-      setCart([...cart, { ...product, amount: 1 }]);
-    }
-  }
+  const { cart, setCart, remove } = props
   
-  return (
-    <>
-      <CartStyle>
-        {cart.map((item, indice) =>
-          <ItemCart key={indice}>
-            <StyleCartText><h3>{item.name}</h3> <p>Qtd:{item.amount}</p></StyleCartText>
-            <h3>R$:{item.price}</h3>
-            <BtnRemove /* onClick={handleAddToCart} */>Remover</BtnRemove>
-          </ItemCart>
-        )
-        }
-      </CartStyle>
-    </>
-  )
-}
+  let soma = 0
+  for(let item of cart){
+    const mult = item.value * item.amount
+    soma = soma + mult
+  }
 
-export default Cart
+    return (
+
+      <CartStyle>
+        <h2>Carrinho</h2>
+        <StyleCart>
+          {cart.map((item, indice) =>
+            <ItemCart key={indice}>
+              <StyleCartText><h3>{item.name}</h3> <p>Qtd:{item.amount}</p></StyleCartText>
+              <h3>R$:{item.value.toFixed([2])}</h3>
+              <BtnRemove onClick={() => remove(item, indice)}>Remover</BtnRemove>
+            </ItemCart>
+
+          )
+          }
+        </StyleCart>
+        <Total>Total: {soma.toFixed([2])}</Total>
+      </CartStyle>
+
+    )
+  }
+
+  export default Cart

@@ -6,8 +6,8 @@ export const CartStyle = styled.section`
     flex-direction: column;
     gap: 16px;
     align-items: center;
-    padding: 10px;
     background-color:#f1f1f1;
+    padding-top: 10px;
 `
 
 export const ItemCart = styled.div`
@@ -17,15 +17,14 @@ export const ItemCart = styled.div`
     gap: 8px;
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 5px 5px 7px 3px #e9e9e9;
 `
 export const BtnRemove = styled.button`
     width: 70px;
-    height: 30px;
+    height: 20px;
     align-self: center;
     justify-self: center;
     border-radius: 5px;
@@ -39,7 +38,29 @@ export const StyleCartText = styled.div`
     display: flex;
     width: 80%;
     justify-content:space-between ;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    margin-bottom: 8px;
+    margin-top: 10px;
     
+`
+export const StyleCart = styled.div`
+    display: flex;
+    width: 100%;
+    height: 65vh;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding: 10px;
+    overflow-y: scroll;
+`
+
+export const Total = styled.h3`
+    width: 300px;
+    height: 90px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px 3px #e9e9e9;
+    font-size: 28px;
 `
