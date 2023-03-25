@@ -1,28 +1,32 @@
 import React, { useState } from 'react'
 import { HomeStyle, DivUm, DivDois } from './HomeStyle'
-import  ProductCard from '../../ProductCard/ProductCard'
+import ProductCard from '../../ProductCard/ProductCard'
 import { Lista } from '../../../assents/productList'
 
 
 const Home = (props) => {
 
-    const { amount, onChangeAmount, cart, addCart ,ordination, numOrdination,} = props
+    const { addCart, onChangeOrder, order, listaFiltrada } = props
 
-    
+
     return (
         <>
             <HomeStyle>
                 <DivUm>
-                    <p>Quantidade de produtos: {Lista.length}</p>
+                    <p>Quantidade de produtos: {listaFiltrada.length}</p>
                     <label >Ordenação:
-                        <select value={ordination} onChange={numOrdination}>
+                        <select value={order} onChange={onChangeOrder}>
+                            <option value="">Ordenar</option>
                             <option value="crescente">Crescente</option>
                             <option value="decrescente">Decrescente</option>
                         </select>
                     </label>
                 </DivUm>
                 <DivDois>
-                    <ProductCard addCart={addCart} cart={cart} />
+                    <ProductCard
+                        order={order}
+                        addCart={addCart}
+                        listaFiltrada={listaFiltrada} />
                 </DivDois>
             </HomeStyle>
         </>
